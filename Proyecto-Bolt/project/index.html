@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elecciones Escolares 2025</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <!-- Formulario inicial -->
+  <div id="inicio" class="container" style="display: block;">
+    <h1>Elecciones Escolares 2025</h1>
+    <p>Introduce tus datos para participar en las elecciones</p>
+
+    <label for="dni">DNI (8 dígitos):</label>
+    <input type="text" id="dni" maxlength="8" required oninput="verificarFormulario()">
+
+    <label for="nombre">Nombre completo:</label>
+    <input type="text" id="nombre" required oninput="verificarFormulario()">
+
+    <label for="fecha">Fecha de nacimiento:</label>
+    <input type="date" id="fecha" required oninput="verificarFormulario()">
+
+    <label for="grado">Grado y sección:</label>
+    <select id="grado" required onchange="verificarFormulario()">
+      <option value="" disabled selected>Seleccione</option>
+      <option value="1A">1°A</option>
+      <option value="1B">1°B</option>
+      <option value="2A">2°A</option>
+      <option value="2B">2°B</option>
+      <option value="3A">3°A</option>
+      <option value="3B">3°B</option>
+      <option value="4A">4°A</option>
+      <option value="4B">4°B</option>
+      <option value="5A">5°A</option>
+      <option value="5B">5°B</option>
+    </select>
+
+    <button class="button" id="continuarBtn" onclick="mostrarCandidatos()" disabled>Continuar</button>
+    <button class="admin-button" onclick="mostrarAdminLogin()">Panel de Control</button>
+  </div>
+
+  <!-- Lista de candidatos -->
+  <div id="candidatos" class="container">
+    <h1>Lista de Candidatos</h1>
+
+    <div class="candidate" onclick="mostrarPerfil('candidato1')">
+      <img src="https://github.com/user-attachments/assets/cde274e5-6b93-4b89-a94d-f097ae888a6c" alt="Foto de Sofia Quispe">
+      <div class="candidate-info">
+        <h3>Sofia Quispe</h3>
+        <p>"Juntos podemos lograr grandes cambios"</p>
+      </div>
+    </div>
+
+    <div class="candidate" onclick="mostrarPerfil('candidato2')">
+      <img src="https://github.com/user-attachments/assets/1dbc76dc-927a-4b33-b684-bced232ef2eb" alt="Foto de Laura Fernández">
+      <div class="candidate-info">
+        <h3>Laura Fernández</h3>
+        <p>"Creciendo juntos hacia un futuro mejor"</p>
+      </div>
+    </div>
+
+    <div class="candidate" onclick="mostrarPerfil('candidato3')">
+      <img src="https://github.com/user-attachments/assets/f9d88fb6-b1d6-46bd-a048-ce9d4a295f1a" alt="Foto de Carlos Ramírez">
+      <div class="candidate-info">
+        <h3>Carlos Ramírez</h3>
+        <p>"Unidos en cada paso del camino"</p>
+      </div>
+    </div>
+
+    <button class="back-button" onclick="volverAInicio()">Volver</button>
+  </div>
+
+  <!-- Perfil de candidato seleccionado -->
+  <div id="perfil" class="container">
+    <h2 id="nombre-candidato"></h2>
+    <img id="profile-img" class="profile-img" src="" alt="Foto del Candidato">
+    <ul id="lista-propuestas"></ul>
+    <button class="vote-button" id="btn-votar" onclick="votar()">Votar</button>
+    <button class="back-button" onclick="volverACandidatos()">Volver</button>
+  </div>
+
+  <!-- Panel de Control (Admin) -->
+  <div id="admin-login" class="container">
+    <h2>Acceso al Panel de Control</h2>
+    <div class="admin-form">
+      <label for="admin-password">Contraseña:</label>
+      <input type="password" id="admin-password" oninput="verificarPassword()">
+      <button class="button" id="accederBtn" onclick="accederPanel()" disabled>Acceder</button>
+      <button class="back-button" onclick="volverAInicio()">Volver</button>
+    </div>
+  </div>
+
+  <div id="admin-panel" class="container">
+    <h2>Panel de Control - Resultados de Votación</h2>
+    <div id="admin-resultados">
+      <ul id="admin-lista-resultados"></ul>
+    </div>
+    <button class="back-button" onclick="volverAInicio()">Cerrar Sesión</button>
+  </div>
+
+  <!-- Mensaje después de votar -->
+  <div id="mensaje-final">¡Gracias por votar! Tu voz es importante.</div>
+
+  <!-- Créditos -->
+  <div id="credits">Creado por Anderson Acuña Francia desde 5° A</div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
